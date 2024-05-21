@@ -1,0 +1,42 @@
+{% set pageTitle = "Do you want to add another book?" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+      <form class="form" action="check-your-answers" method="post">
+
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "changedName",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+      </form>
+
+
+{% endblock %}

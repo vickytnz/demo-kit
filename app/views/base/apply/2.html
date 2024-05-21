@@ -1,0 +1,61 @@
+{% set pageTitle = "Applying for licence for a type of book" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+      <form class="form" action="3" method="post">
+
+
+{{ pageTitle | headingH1 | safe  }}
+
+
+
+{{ govukDetails({
+  summaryText: "Understanding type of books",
+  text: "Books can be fiction, non-fiction or scientific. You can read lots of books at your local library to find out what books you would like to start writing. "
+}) }}
+
+
+
+{{ govukRadios({
+name: "whereDoYouLive",
+fieldset: {
+  legend: {
+    text: "What type of book do you want to write?",
+    classes: "govuk-fieldset__legend--m"
+
+  }
+},
+items: [
+  {
+    value: "Non fiction",
+    text: "Non fiction"
+  },
+  {
+    value: "Romance",
+    text: "Romance"
+  },
+  {
+    value: "Science fiction",
+    text: "Science fiction"
+  },
+  {
+    value: "Thriller",
+    text: "Thriller"
+  }
+]
+}) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+      </form>
+
+
+{% endblock %}

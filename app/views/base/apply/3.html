@@ -1,0 +1,35 @@
+{% set pageTitle = "Tell us about your first book" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+      <form class="form" action="4" method="post">
+
+
+{{ govukTextarea({
+  name: "moreDetail",
+  id: "more-detail",
+  rows: "8",
+  label: {
+    text:  pageTitle ,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Write a brief synopsis in less than 200 characters about your first book."
+  }
+}) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+      </form>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% set pageTitle = "Your details" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+      <form class="form" action="2" method="post">
+
+
+{{ pageTitle | headingH1 | safe  }}
+
+
+
+    {{ govukInput({
+    label: {
+      text: "Full name"
+    },
+    id: "full-name",
+    name: "fullName"
+  }) }}
+
+
+    {{ govukInput({
+    label: {
+      text: "Email address"
+    },
+    id: "email-address",
+    name: "email"
+  }) }}
+
+
+  {{ govukDateInput({
+    id: "date-of-birth",
+    namePrefix: "date-of-birth",
+    fieldset: {
+      legend: {
+        text: "Date of birth"
+      }
+    },
+    hint: {
+      text: "For example, 27 3 2007"
+    }
+  }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+      </form>
+
+
+{% endblock %}

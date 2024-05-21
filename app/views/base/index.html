@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+    <h1 class="govuk-heading-xl">
+    Version for testing
+    </h1>
+
+
+    <h2 class="govuk-heading-m">
+  Guidance pages
+    </h2>
+    <ul class="govuk-list govuk-list--bullet">
+
+  <li>
+    <a href="/{{folder}}/start">Start page</a>
+</li>
+<li><a href="/{{folder}}/accordion">Accordion guidance</a>
+</li>
+
+</ul>
+
+<h2 class="govuk-heading-m">
+Apply pages
+</h2>
+<ul class="govuk-list govuk-list--bullet">
+
+<li>
+<a href="/{{folder}}/apply/1">Q1</a>
+</li>
+<li><a href="/{{folder}}/apply/2">Q2</a>
+</li>
+<li><a href="/{{folder}}/apply/3">Q3</a>
+</li>
+<li><a href="/{{folder}}/apply/4">Q4</a>
+</li>
+<li><a href="/{{folder}}/apply/check-your-answers">Check your answers</a>
+</li>
+<li><a href="/{{folder}}/apply/confirmation">Confirmation</a>
+</li>
+</ul>
+
+<h2 class="govuk-heading-m">
+Account
+</h2>
+
+<ul class="govuk-list govuk-list--bullet">
+
+<li>
+<a href=/{{folder}}/account/index>account home</a>
+</li>
+
+  </div>
+</div>
+
+{% endblock %}

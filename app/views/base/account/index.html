@@ -1,0 +1,30 @@
+{% set pageTitle = "Your details" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block account %}
+
+
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    You have 7 days left to send your application.
+    <a class="govuk-notification-banner__link" href="#">View application</a>.
+  </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
+  <p>
+
+
+    Panel
+    Important – if you don’t upload your evidence of your writing your application won’t be processed.
+
+    Upload writing style document – file upload.
+
+    Change the type of licence you have.
+
+
+  </p>
+
+{% endblock %}

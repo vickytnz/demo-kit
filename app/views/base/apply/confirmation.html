@@ -1,0 +1,25 @@
+{% set pageTitle = "Do you want to add another book?" %}
+{% set hideBack = true %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+{{ govukPanel({
+     titleText: "Application complete",
+     html: "Your reference number<br><strong>HDJ2123F</strong>"
+   }) }}
+
+   <p class="govuk-body">We have sent you a confirmation email.</p>
+
+   <h2 class="govuk-heading-m">What happens next</h2>
+
+   <p class="govuk-body">
+     You need to upload evidence of your writing. You can do this in your account.
+   </p>
+
+   {{ govukButton({
+     href: "/" + folder +  "/account/index", 
+   text: "Save and continue"
+ }) }}
+
+{% endblock %}
