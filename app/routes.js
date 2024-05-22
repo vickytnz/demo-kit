@@ -38,9 +38,11 @@ router.use((req, res, next) => {
   // Check current and previous - good for debugging
   router.use('/', (req, res, next) => {
     res.locals.currentURL = req.originalUrl; //current screen
-    let prevTest = req.get('Referrer');
+    var prevTest = req.get('Referrer');
     if (typeof prevTest !== 'undefined') {
       prevText = prevTest.replace(/^.*\/\/[^\/]+/, '');
+    } else {
+      prevText = "";
     }
     res.locals.prevURL = prevText; // previous screen
 
