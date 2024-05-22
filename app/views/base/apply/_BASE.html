@@ -1,4 +1,4 @@
-{% set serviceName = "Author licence" %}
+{% set serviceName = "Get help to study" %}
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
@@ -21,7 +21,47 @@
 {% endset %}
 
 <form action="/{{folder}}/cookie-router" method="post" novalidate>
+{% if data['cookies'] and data['cookies']['hidden'] == "yes" %}
+<!-- cookies hidden -->
+{% elif data['cookies'] and data['cookies']['analytics'] == "yes"  %}
+{{ govukCookieBanner({
+  ariaLabel: "Cookies on " + serviceName,
+  messages: [
+    {
+      headingText: "Cookies on " + serviceName,
+      html: acceptHtml,
+      role: "alert",
+      actions: [
+        {
+          text: "Hide cookie message",
+          type: "submit",
+          name: "cookies[hidden]",
+          value: "yes"
+        }
+      ]
+    }
+  ]
+}) }}
 
+{% elif data['cookies'] and data['cookies']['analytics'] == "no"  %}
+{{ govukCookieBanner({
+  ariaLabel: "Cookies on " + serviceName,
+  messages: [
+    {
+      headingText: "Cookies on " + serviceName,
+      html: rejectHtml,
+      role: "alert",
+      actions: [
+        {
+          text: "Hide cookie message",
+          type: "button"
+        }
+      ]
+    }
+  ]
+}) }}
+
+{% else %}
 {{ govukCookieBanner({
   ariaLabel: "Cookies on " + serviceName,
   messages: [
@@ -71,6 +111,7 @@
     }
   ]
 }) }}
+{% endif %}
 </form>
 {% endblock %}
 
@@ -96,13 +137,22 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
+      {% if not hideForm %}
+      <form class="form" action="{% if prevURL and prevURL.indexOf('check-your-answers') > -1 %}check-your-answers{% else %}{{nextPage}}{% endif %}" method="post">
+{% endif %}
 {% block form %}
 
 Form content here
 
 {% endblock %}
 
+{% if not hideForm %}
+        {{ govukButton({
+          text: "Save" if (prevURL == ("/" + folder + "/" + subfolder +   "/check-your-answers")) else "Continue"
+        }) }}
+
+      </form>
+{% endif %}
 
     </div>
   </div>

@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
-
+{% set pageTitle = "Get help to study" %}est
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  {{pageTitle}} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -35,11 +35,10 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        {{ serviceName }}
+        {{pageTitle}}
       </h1>
 
-      <p>  Use this service if you want to register and apply for a licence to become an author.
-An author is someone who writes books. You can apply to be an author for fiction, non-fiction or scientific books.</p>
+      <p>  Use this service to get help for studying</p>
 
 
 <p>You can use this to:</p>
@@ -49,11 +48,11 @@ An author is someone who writes books. You can apply to be an author for fiction
 <li>
   register for an account
 </li><li>
-apply for a licence to write one or more style of book
+apply for help
 </li><li>
 check the progress of your application
 </li><li>
-change personal details or the type of book you want to write
+change personal details
 </li>
   </ul>
 
@@ -67,7 +66,7 @@ change personal details or the type of book you want to write
 
       <p>
         {{ govukWarningText({
-          text: "You need to have the correct authors licence before you can write each type of book. ",
+          text: "You need to have documents to apply ",
           iconFallbackText: "Warning"
         }) }}
 
@@ -76,13 +75,13 @@ change personal details or the type of book you want to write
 You’ll be asked for your personal information and also to upload a writing example before your application can be processed.
 </p>
 <p>
-Here are <a href="accordion">some questions that might be relevant</a> for a fictional UK government service page dedicated to applying for an author's licence:
+Here are <a href="accordion">some questions that might be relevant</a> for a fictional UK government service page to get help to study.
 </p>
   <h2 class="govuk-heading-m">
 If you need help using this service
 </h2>
 <p>
-Contact your local authors board if you need help finding out what type of book you want to write.
+Contact your study provider if you need help finding out what type of help you can get.
 </p>
 
 <p>Registering takes around 5 minutes.</p>
@@ -92,6 +91,13 @@ Contact your local authors board if you need help finding out what type of book 
   href: "apply/1",
   isStartButton: true
 }) }}
+
+<h2 class="govuk-heading-m">
+If you have already applied
+</h2>
+<p>
+You can <a href="account/index">check your account.</a>You will need your application reference and some personal details. 
+</p>
 
     </div>
 
@@ -106,7 +112,7 @@ Contact your local authors board if you need help finding out what type of book 
             <li>
               <a href="#">
 
-                Author’s licence information
+                Study inforamtion
               </a>
             </li>
             <li>

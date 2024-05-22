@@ -1,13 +1,12 @@
 {% set pageTitle = "Your details" %}
+{% set nextPage = "2" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
-      <form class="form" action="2" method="post">
 
 
 {{ pageTitle | headingH1 | safe  }}
-
 
 
     {{ govukInput({
@@ -15,7 +14,8 @@
       text: "Full name"
     },
     id: "full-name",
-    name: "fullName"
+    name: "fullName",
+    value: data['fullName']
   }) }}
 
 
@@ -24,13 +24,15 @@
       text: "Email address"
     },
     id: "email-address",
-    name: "email"
+    name: "email",
+    value: data['email']
   }) }}
 
 
   {{ govukDateInput({
     id: "date-of-birth",
     namePrefix: "date-of-birth",
+    values: data["date-of-birth"],
     fieldset: {
       legend: {
         text: "Date of birth"
@@ -43,14 +45,7 @@
 
 
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
 
-
-
-
-      </form>
 
 
 {% endblock %}

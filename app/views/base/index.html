@@ -17,45 +17,77 @@
     <h2 class="govuk-heading-m">
   Guidance pages
     </h2>
-    <ul class="govuk-list govuk-list--bullet">
 
-  <li>
-    <a href="/{{folder}}/start">Start page</a>
-</li>
-<li><a href="/{{folder}}/accordion">Accordion guidance</a>
-</li>
+{% set guidance = [
+{title: "Start page", description: "Guidance, start page, important text", link: "start" },
+{title: "Guidance", description: "Accordion", link: "guidance" }
 
-</ul>
+  ]%}
+
+{% macro customCheck(list)%}
+  {% for object in list %}
+       <div class="govuk-summary-list__row">
+         <dt class="govuk-summary-list__key">
+           {{object.title}}
+         </dt>
+         <dd class="govuk-summary-list__value">
+           {{object.description}}
+         </dd>
+      <dd class="govuk-summary-list__actions">
+<a class="govuk-link" href="/{{folder}}/{{object.link}}">View <span class="govuk-visually-hidden">{{object.title}}</span></a>
+         </dd>
+       </div>
+{% endfor %}
+{% endmacro %}
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+{{ customCheck(guidance) }}
+
+          </dl>
+
+
+
 
 <h2 class="govuk-heading-m">
 Apply pages
 </h2>
-<ul class="govuk-list govuk-list--bullet">
 
-<li>
-<a href="/{{folder}}/apply/1">Q1</a>
-</li>
-<li><a href="/{{folder}}/apply/2">Q2</a>
-</li>
-<li><a href="/{{folder}}/apply/3">Q3</a>
-</li>
-<li><a href="/{{folder}}/apply/4">Q4</a>
-</li>
-<li><a href="/{{folder}}/apply/check-your-answers">Check your answers</a>
-</li>
-<li><a href="/{{folder}}/apply/confirmation">Confirmation</a>
-</li>
-</ul>
+{% set apply = [
+{title: "Q1", description: "Input, date, back link, cookie banner", link: "apply/1" },
+{title: "Q2", description: "Conditional reveal, complex question, checkboxes, back link", link: "apply/2" },
+{title: "Q3", description: "Textarea, back link", link: "apply/3" },
+{title: "Q4", description: "Radio, back link", link: "apply/4" },
+{title: "Q5", description: "Upload link", link: "apply/5" },
+{title: "Check your answers", description: "Summary list", link: "apply/check-your-answers" },
+{title: "Confirmation", description: "Panel, button", link: "apply/confirmation" }
+
+  ]%}
+
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+{{ customCheck(apply) }}
+
+      </dl>
+
 
 <h2 class="govuk-heading-m">
 Account
 </h2>
 
-<ul class="govuk-list govuk-list--bullet">
 
-<li>
-<a href=/{{folder}}/account/index>account home</a>
-</li>
+{% set account = [
+{title: "Account home", description: "Menu with links", link: "account/index" }
+
+  ]%}
+
+
+  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+  {{ customCheck(account) }}
+
+        </dl>
 
   </div>
 </div>

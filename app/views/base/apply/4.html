@@ -1,14 +1,15 @@
-{% set pageTitle = "Do you want to add another book?" %}
+{% set pageTitle = "Do you want to upload a document now?" %}
+{% set nextPage = "5" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
-      <form class="form" action="check-your-answers" method="post">
+
 
 
         {{ govukRadios({
-          classes: "govuk-radios--inline",
-          name: "changedName",
+          name: "upload",
+          value: data['upload'],
           fieldset: {
             legend: {
               text: pageTitle,
@@ -18,25 +19,17 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "no",
-              text: "No"
+              value: "No, upload later",
+              text: "No, upload later"
             }
           ]
         }) }}
 
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-
-
-
-      </form>
 
 
 {% endblock %}

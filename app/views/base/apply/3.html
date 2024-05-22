@@ -1,35 +1,25 @@
-{% set pageTitle = "Tell us about your first book" %}
+{% set pageTitle = "Tell us about your study" %}
+{% set nextPage = "4" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
-      <form class="form" action="4" method="post">
 
 
-{{ govukTextarea({
+{{ govukCharacterCount({
   name: "moreDetail",
   id: "more-detail",
-  rows: "8",
+  maxlength: 200,
   label: {
-    text:  pageTitle ,
+    text: pageTitle,
     classes: "govuk-label--l",
     isPageHeading: true
   },
   hint: {
-    text: "Write a brief synopsis in less than 200 characters about your first book."
+    text: "Do not include personal or financial information like your National Insurance number or credit card details."
   }
 }) }}
 
-
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-
-
-
-      </form>
 
 
 {% endblock %}

@@ -1,61 +1,52 @@
-{% set pageTitle = "Applying for licence for a type of book" %}
+{% set pageTitle = "Types of help you need" %}
+{% set nextPage = "3" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
-      <form class="form" action="3" method="post">
+
 
 
 {{ pageTitle | headingH1 | safe  }}
 
-
+<p>You can get a range of help depending on your situation.</p>
 
 {{ govukDetails({
-  summaryText: "Understanding type of books",
-  text: "Books can be fiction, non-fiction or scientific. You can read lots of books at your local library to find out what books you would like to start writing. "
+  summaryText: "Understanding types of help",
+  text: "You can get a range of help. Apply for as many as you think you need "
+}) }}
+
+
+{{ govukCheckboxes({
+  name: "types",
+  values: data['types'],
+  fieldset: {
+    legend: {
+      text: "What types of help do you need?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Tuition fee support",
+      text: "Tuition fee support"
+    },
+    {
+      value: "Living costs support",
+      text: "Living costs support"
+    },
+    {
+      value: "Support to study with for a disability or health condition",
+      text: "Support to study with for a disability or health condition"
+    }
+  ]
 }) }}
 
 
 
-{{ govukRadios({
-name: "whereDoYouLive",
-fieldset: {
-  legend: {
-    text: "What type of book do you want to write?",
-    classes: "govuk-fieldset__legend--m"
-
-  }
-},
-items: [
-  {
-    value: "Non fiction",
-    text: "Non fiction"
-  },
-  {
-    value: "Romance",
-    text: "Romance"
-  },
-  {
-    value: "Science fiction",
-    text: "Science fiction"
-  },
-  {
-    value: "Thriller",
-    text: "Thriller"
-  }
-]
-}) }}
-
-
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-
-
-
-      </form>
 
 
 {% endblock %}

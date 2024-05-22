@@ -1,0 +1,23 @@
+{% set pageTitle = "Upload file" %}
+{% set nextPage = "check-your-answers" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+
+
+        {{ pageTitle | headingH1 | safe  }}
+
+
+        {{ govukFileUpload({
+          id: "file-upload-1",
+          value: data['fileUpload1'],
+          name: "fileUpload1",
+          label: {
+            text: "Upload a file"
+          }
+        }) }}
+
+
+
+{% endblock %}

@@ -1,11 +1,13 @@
-{% set pageTitle = "Do you want to add another book?" %}
+{% set pageTitle = "Application complete" %}
 {% set hideBack = true %}
+{% set hideForm = true %} <!-- want custom approach to form -->
+
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
 {{ govukPanel({
-     titleText: "Application complete",
+     titleText: pageTitle,
      html: "Your reference number<br><strong>HDJ2123F</strong>"
    }) }}
 
@@ -18,7 +20,7 @@
    </p>
 
    {{ govukButton({
-     href: "/" + folder +  "/account/index", 
+     href: "/" + folder +  "/account/index",
    text: "Save and continue"
  }) }}
 
