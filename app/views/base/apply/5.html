@@ -1,9 +1,22 @@
 {% set pageTitle = "Upload file" %}
-{% set nextPage = "check-your-answers" %}
+{% set nextPage = "5-router" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
+
+{% if data['errors'] and not data['fileUpload1'] %}
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Upload a file",
+      href: "#fileUpload1"
+    }
+  ]
+}) }}
+
+{% endif %}
 
 
         {{ pageTitle | headingH1 | safe  }}

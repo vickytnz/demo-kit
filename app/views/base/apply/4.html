@@ -1,10 +1,22 @@
 {% set pageTitle = "Do you want to upload a document now?" %}
-{% set nextPage = "5" %}
+{% set nextPage = "4-router" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
 
+{% if data['errors'] and not data['upload'] %}
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Choose an option",
+      href: "#upload"
+    }
+  ]
+}) }}
+
+{% endif %}
 
 
         {{ govukRadios({
@@ -17,6 +29,9 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
+          errorMessage: {
+            text: "Choose an option"
+          } if ( data['errors'] and not data['upload']),
           items: [
             {
               value: "Yes",

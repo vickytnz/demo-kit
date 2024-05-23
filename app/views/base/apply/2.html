@@ -1,11 +1,22 @@
 {% set pageTitle = "Types of help you need" %}
-{% set nextPage = "3" %}
+{% set nextPage = "2-router" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
 
+{% if data['errors'] %}
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select what types of support you need",
+      href: "#types"
+    } if data['errors']
+  ]
+}) }}
 
+{% endif %}
 
 {{ pageTitle | headingH1 | safe  }}
 
@@ -20,6 +31,9 @@
 {{ govukCheckboxes({
   name: "types",
   values: data['types'],
+  errorMessage: {
+   text: "Select what types of support you need"
+ } if data['errors'],
   fieldset: {
     legend: {
       text: "What types of help do you need?",

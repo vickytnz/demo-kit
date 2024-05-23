@@ -1,9 +1,21 @@
 {% set pageTitle = "Tell us about your study" %}
-{% set nextPage = "4" %}
+{% set nextPage = "3-router" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
 
+{% if data['errors'] and not data['moreDetail'] %}
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Give detail",
+      href: "#moreDetail"
+    }
+  ]
+}) }}
+
+{% endif %}
 
 
 {{ govukCharacterCount({
@@ -17,7 +29,10 @@
   },
   hint: {
     text: "Do not include personal or financial information like your National Insurance number or credit card details."
-  }
+  },
+  errorMessage: {
+    text: "Give detail"
+  } if (data['errors'] and not data['moreDetail'])
 }) }}
 
 
