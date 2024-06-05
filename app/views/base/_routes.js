@@ -13,6 +13,7 @@ router.post('/cookie-router', (req, res) => {
 router.post('/cookie-page-router', (req, res) => {
   // var return = res.locals.prevURL;
   req.session.data['success'] = "true";
+  req.session.data['cookies']['hidden'] = 'yes'; //need to manually add to hide the cookie banner
   res.redirect(res.locals.prevURL);
 })
 
@@ -21,7 +22,7 @@ router.post('/cookie-page-router', (req, res) => {
 router.all('/apply/cookies', (req, res, next) => {
   console.log('apply');
   if (req.session.data['success'] == "true" ){
-  req.session.data['success'] = ''; //sets cookie page to switch off after success 
+  req.session.data['success'] = ''; //sets cookie page to switch off after success
   }
   next();
 })
