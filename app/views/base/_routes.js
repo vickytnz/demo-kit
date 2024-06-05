@@ -10,6 +10,21 @@ router.post('/cookie-router', (req, res) => {
 })
 
 
+router.post('/cookie-page-router', (req, res) => {
+  // var return = res.locals.prevURL;
+  req.session.data['success'] = "true";
+  res.redirect(res.locals.prevURL);
+})
+
+
+
+router.all('/apply/cookies', (req, res, next) => {
+  console.log('apply');
+  if (req.session.data['success'] == "true" ){
+  req.session.data['success'] = ''; //sets cookie page to switch off after success 
+  }
+  next();
+})
 
 router.post('/apply/1-router', (req, res) =>{
   if (req.session.data['fullName'] && req.session.data['email'] && req.session.data['date-of-birth-day'] && req.session.data['date-of-birth-month'] && req.session.data['date-of-birth-year'] ){

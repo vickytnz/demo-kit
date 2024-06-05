@@ -13,11 +13,11 @@
 {% endset %}
 
 {% set acceptHtml %}
-  <p class="govuk-body">You’ve accepted analytics cookies. You can <a class="govuk-link" href="#">change your cookie settings</a> at any time.</p>
+  <p class="govuk-body">You’ve accepted analytics cookies. You can <a class="govuk-link" href="cookies">change your cookie settings</a> at any time.</p>
 {% endset %}
 
 {% set rejectHtml %}
-  <p class="govuk-body">You’ve rejected analytics cookies. You can <a class="govuk-link" href="#">change your cookie settings</a> at any time.</p>
+  <p class="govuk-body">You’ve rejected analytics cookies. You can <a class="govuk-link" href="cookies">change your cookie settings</a> at any time.</p>
 {% endset %}
 
 <form action="/{{folder}}/cookie-router" method="post" novalidate>
@@ -83,7 +83,7 @@
       },
         {
           text: "View cookies",
-          href: "#"
+          href: "cookies"
         }
       ]
     },
@@ -156,5 +156,29 @@ Form content here
 
     </div>
   </div>
+
+{% endblock %}
+
+{% block footer %}
+
+
+{{ govukFooter({
+  meta: {
+    items: [
+      {
+        href: "/" + folder + "/" + subfolder + "/cookies",
+        text: "Cookies"
+      },
+      {
+        href: "/manage-prototype",
+        text: "Manage prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      }
+    ]
+  }
+}) }}
 
 {% endblock %}
