@@ -1,5 +1,5 @@
 {% set pageTitle = "Your details" %}
-{% set nextPage = "1-router" %}
+{% set nextPage = "2" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block form %}
@@ -42,7 +42,8 @@
 
     {{ govukInput({
     label: {
-      text: "Full name"
+      text: "Full name",
+      classes: "govuk-fieldset__legend--m"
     },
     id: "full-name",
     name: "fullName",
@@ -55,7 +56,8 @@
 
     {{ govukInput({
     label: {
-      text: "Email address"
+      text: "Email address",
+      classes: "govuk-fieldset__legend--m"
     },
     id: "email-address",
     name: "email",
@@ -69,7 +71,8 @@
   {{ govukDateInput({
   fieldset: {
     legend: {
-      text: "Date of birth"
+      text: "Date of birth",
+      classes: "govuk-fieldset__legend--m"
     }
   },
   hint: {
