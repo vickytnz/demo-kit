@@ -30,7 +30,7 @@ router.all('/apply/cookies', (req, res, next) => {
 router.post('/apply/1-router', (req, res) =>{
   if (req.session.data['fullName'] && req.session.data['email'] && req.session.data['date-of-birth-day'] && req.session.data['date-of-birth-month'] && req.session.data['date-of-birth-year'] ){
     req.session.data['errors'] = '';
-    res.redirect('2');
+    res.redirect('1a');
   }
  else {
    req.session.data['errors'] = "true";
