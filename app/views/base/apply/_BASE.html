@@ -1,8 +1,8 @@
-{% set serviceName = "Get help to study" %}
 {% extends "layouts/main.html" %}
-
+{% set tempName =  "Form section" %}
+{% set serviceName = "Get help to study" %}
 {% block pageTitle %}
-  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+  {% if data['errors'] %}Error: {% endif %}{{pageTitle}} - {{tempName}}  –  {{ serviceName }} - GOV.UK
 {% endblock %}
 
 
@@ -138,7 +138,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {% if not hideForm %}
-      <form class="form" action="{% if prevURL and prevURL.indexOf('check-your-answers') > -1 %}check-your-answers{% else %}{{nextPage}}{% endif %}" method="post">
+      <form class="form" novalidate action="{% if prevURL and prevURL.indexOf('check-your-answers') > -1 %}check-your-answers{% else %}{{nextPage}}{% endif %}" method="post">
 {% endif %}
 {% block form %}
 

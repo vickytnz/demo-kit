@@ -1,7 +1,8 @@
 {% extends "layouts/main.html" %}
-{% set pageTitle = "Get help to study" %}est
+{% set pageTitle = "Get help to study" %}
+{% set serviceName = " " %}
 {% block pageTitle %}
-  {{pageTitle}} – GOV.UK Prototype Kit
+  {{pageTitle}} - GOV.UK
 {% endblock %}
 
 {% block header %}
@@ -75,7 +76,7 @@ change personal details
 You’ll be asked for your personal information and also to upload a writing example before your application can be processed.
 </p>
 <p>
-Here are <a href="accordion">some questions that might be relevant</a> for a fictional UK government service page to get help to study.
+Here are <a class="govuk-link" href="accordion">some questions that might be relevant</a> for a fictional UK government service page to get help to study.
 </p>
   <h2 class="govuk-heading-m">
 If you need help using this service
@@ -95,8 +96,8 @@ Contact your study provider if you need help finding out what type of help you c
 <h2 class="govuk-heading-m">
 If you have already applied
 </h2>
-<p>
-You can <a href="account/index">check your account.</a>You will need your application reference and some personal details. 
+<p class="govuk-body">
+You can <a class="govuk-link" href="account/index">check your account.</a>You will need your application reference and some personal details.
 </p>
 
     </div>
@@ -110,18 +111,18 @@ You can <a href="account/index">check your account.</a>You will need your applic
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
-              <a href="#">
+              <a class="govuk-link" href="#">
 
                 Study inforamtion
               </a>
             </li>
             <li>
-              <a href="#">
+              <a class="govuk-link" href="#">
                 Related link
               </a>
             </li>
             <li>
-              <a href="#" class="govuk-!-font-weight-bold">
+              <a href="#" class="govuk-link govuk-!-font-weight-bold">
                 More <span class="govuk-visually-hidden">in Subsection</span>
               </a>
             </li>

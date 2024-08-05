@@ -1,10 +1,15 @@
-{% set pageTitle = "Your details" %}
+{% set pageTitle = "Account home" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
 {% block account %}
 
 
+
+
 {% set html %}
+
+
+
   <p class="govuk-notification-banner__heading">
     You have tasks to complete.
     <a class="govuk-notification-banner__link" href="tasks">Go to incomplete tasks</a>.
@@ -14,7 +19,12 @@
 {{ govukNotificationBanner({
   html: html
 }) }}
-  <p>
+
+{{ pageTitle | headingH1 | safe  }}
+
+
+  <p class="govuk-body">
+
 
 
     Panel

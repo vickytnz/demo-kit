@@ -47,6 +47,8 @@
     },
     id: "full-name",
     name: "fullName",
+    autocomplete: "name",
+    spellcheck: false,
     value: data['fullName'],
     errorMessage: {
     text: "Enter full name"
@@ -61,6 +63,9 @@
     },
     id: "email-address",
     name: "email",
+    type: "email",
+    autocomplete: "email",
+    spellcheck: false,
     value: data['email'],
     errorMessage: {
     text: "Enter email address"

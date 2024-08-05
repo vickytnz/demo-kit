@@ -1,21 +1,24 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% set pageName=serviceName %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
 
     <h1 class="govuk-heading-xl">
       {{ serviceName }}
     </h1>
 
-<P><a href="base/index">Base pages</a></p>
+<P class="govuk-body"><a class="govuk-link" href="base/index">Base pages</a></p>
 
     {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+
+
+    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+
   </div>
 </div>
 
