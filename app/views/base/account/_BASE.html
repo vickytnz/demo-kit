@@ -1,11 +1,10 @@
-{% set tempName =  "Account section" %}
 {% set serviceName = "Study help account" %}
 
 {% extends "layouts/main.html" %}
 
 
 {% block pageTitle %}
-  {% if data['errors'] %}Error: {% endif %}{{pageTitle}} - {{tempName}}  –  {{ serviceName }} - GOV.UK
+  {% if data['errors'] %}Error: {% endif %}{{pageTitle}}  –  {{ serviceName }} - GOV.UK
 {% endblock %}
 
 {% block header %}

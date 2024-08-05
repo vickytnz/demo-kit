@@ -1,8 +1,7 @@
 {% extends "layouts/main.html" %}
-{% set tempName =  "Form section" %}
 {% set serviceName = "Get help to study" %}
 {% block pageTitle %}
-  {% if data['errors'] %}Error: {% endif %}{{pageTitle}} - {{tempName}}  –  {{ serviceName }} - GOV.UK
+  {% if data['errors'] %}Error: {% endif %}{{pageTitle}} - {{ serviceName }} - GOV.UK
 {% endblock %}
 
 
