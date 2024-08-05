@@ -57,3 +57,29 @@ Account content
   </div>
 
 {% endblock %}
+
+
+{{ govukFooter({
+  meta: {
+    items: [
+      {
+        href: "/base/apply/cookies",
+        text: "Cookies"
+      },
+      {
+        href: "/manage-prototype",
+        text: "Manage prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      },
+      {
+        href: "https://design-system.service.gov.uk/",
+        text: "GOV.UK Design System (opens in new tab)",
+        attributes: {
+          "target" : "_blank"
+        }
+    ]
+  }
+}) }}
