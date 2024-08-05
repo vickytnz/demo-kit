@@ -131,3 +131,23 @@ All screens
 </div>
 
 {% endblock %}
+
+{% block footer %}
+
+
+{{ govukFooter({
+  meta: {
+    items: [
+      {
+        href: "/manage-prototype",
+        text: "Manage prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      }
+    ]
+  }
+}) }}
+
+{% endblock %}
