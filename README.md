@@ -1,10 +1,12 @@
-# Template for accessibility testing 
+# Template for accessibility testing
 
 Example service for building and testing an accessible service.
 
+[Template website](https://demo-kit.vickytnz.com) password: `demo`
+
 ## Testing these pages
 
-This was made using GOV.UK Frontend, the GOV.UK Design System macros where possible and the GOV.UK Prototype kit for interactive elements. 
+This was made using GOV.UK Frontend, the GOV.UK Design System macros where possible and the GOV.UK Prototype kit for interactive elements.
 
 This means that it should only have issues as in the [GOV.UK Design System accessibility statement](https://design-system.service.gov.uk/accessibility-statement/) (which note two issues with Dragon speech recognition software and some components).
 
@@ -17,4 +19,3 @@ When testing using accessibility tester [Adam Liptrot's Pattern Checker Chrome e
 
 ##  Known bugs
 If someone goes from check your answers to a page and deletes information, the error message should show but does not.
-
