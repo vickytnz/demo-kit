@@ -9,7 +9,7 @@
 
 {% block header %}
 {{ govukHeader({
-  homepageUrl: "/",
+  homepageUrl: "https://gov.uk",
   serviceName:  serviceName,
   serviceUrl: "/" + folder + "/" + subfolder + "/index",
   navigation: [
@@ -63,6 +63,10 @@ Account content
 {{ govukFooter({
   meta: {
     items: [
+    {
+      href: "/",
+      text: "Prototype home"
+    },  
       {
         href: "/base/apply/cookies",
         text: "Cookies"

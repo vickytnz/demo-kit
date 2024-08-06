@@ -114,6 +114,15 @@
 </form>
 {% endblock %}
 
+
+{% block header %}
+{{ govukHeader({
+  homepageUrl: "https://gov.uk",
+  serviceName:  serviceName,
+  serviceUrl: "/" + folder + "/start"
+}) }}
+  {% endblock %}
+
 {% block beforeContent %}
 {{ govukPhaseBanner({
   tag: {
@@ -164,6 +173,10 @@ Form content here
 {{ govukFooter({
   meta: {
     items: [
+    {
+      href: "/",
+      text: "Prototype home"
+    },
       {
         href: "/" + folder + "/" + subfolder + "/cookies",
         text: "Cookies"
@@ -177,8 +190,8 @@ Form content here
         text: "Clear data"
       },
       {
-        href: "https://design-system.service.gov.uk/",
-        text: "GOV.UK Design System (opens in new tab)",
+        href: "https://github.com/vickytnz/demo-kit/",
+        text: "Source code on Github (opens in new tab)",
         attributes: {
           "target" : "_blank"
         }
