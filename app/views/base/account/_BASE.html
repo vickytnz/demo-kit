@@ -58,6 +58,7 @@ Account content
 
 {% endblock %}
 
+{% block footer %}
 
 {{ govukFooter({
   meta: {
@@ -80,6 +81,9 @@ Account content
         attributes: {
           "target" : "_blank"
         }
+      }
     ]
   }
 }) }}
+
+{% endblock %}
