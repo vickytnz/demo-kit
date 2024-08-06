@@ -134,3 +134,31 @@ You can <a class="govuk-link" href="account/index">check your account.</a>You wi
   </div>
 
 {% endblock %}
+
+{% block footer %}
+
+
+{{ govukFooter({
+  meta: {
+    items: [
+
+      {
+        href: "/manage-prototype",
+        text: "Manage prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      },
+      {
+        href: "https://github.com/vickytnz/demo-kit/",
+        text: "Source code on Github (opens in new tab)",
+        attributes: {
+          "target" : "_blank"
+        }
+      }
+    ]
+  }
+}) }}
+
+{% endblock %}
