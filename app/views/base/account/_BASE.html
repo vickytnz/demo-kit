@@ -4,7 +4,7 @@
 
 
 {% block pageTitle %}
-  {% if data['errors'] %}Error: {% endif %}{{pageTitle}}  –  {{ serviceName }} - GOV.UK
+  {% if data['errors'] %}Error: {% endif %}{{pageTitle}} – {{ serviceName }} - GOV.UK
 {% endblock %}
 
 {% block header %}
@@ -15,7 +15,7 @@
   navigation: [
     {
       href:  "/" + folder + "/" + subfolder + "/index",
-      text: "Home",
+      text: "Account home",
       active: true
     },
     {
