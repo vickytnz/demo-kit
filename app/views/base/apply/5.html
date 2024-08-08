@@ -10,7 +10,7 @@
   titleText: "There is a problem",
   errorList: [
     {
-      text: "Upload a file",
+      text: "Select a file",
       href: "#fileUpload1"
     }
   ]
@@ -26,6 +26,10 @@
           id: "file-upload-1",
           value: data['fileUpload1'],
           name: "fileUpload1",
+          errorMessage: {
+            text: "Select a file"
+          } if ( data['errors'] and not data['fileUpload1']),
+
           label: {
             text: "Upload a file"
           }
