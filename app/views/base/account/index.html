@@ -5,20 +5,21 @@
 
 
 
+{% if not data['fileUpload2'] %}
 
 {% set html %}
 
 
-
   <p class="govuk-notification-banner__heading">
-    You need to upload examples of your writing.
-    <a class="govuk-notification-banner__link" href="tasks">Go to your application</a> to upload them.
+    You have tasks to complete.
+    <a class="govuk-notification-banner__link" href="tasks">Go to incomplete tasks</a>.
   </p>
 {% endset %}
 
 {{ govukNotificationBanner({
   html: html
 }) }}
+{% endif %}
 
 {{ pageTitle | headingH1 | safe  }}
 

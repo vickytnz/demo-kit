@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Extra details about the scheme – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -38,41 +38,41 @@
         {{ serviceName }}
       </h1>
 
-<p><a href="start">Return to start page</a></p>
+<p>Extra details about the <a href="start">get help to study scheme</a>.</p>
 
       {{ govukAccordion({
         id: "accordion-default",
         items: [
           {
             heading: {
-              text: "Writing well for the web"
+              text: "What types of study you can get help for"
             },
             content: {
-              html: '<p class="govuk-body">This is the content for Writing well for the web.</p>'
+              html: '<p class="govuk-body">You can get help for any study that is recognised by the Office for Students.</p>'
             }
           },
           {
             heading: {
-              text: "Writing well for specialists"
+              text: "Giving proof of identity"
             },
             content: {
-              html: '<p class="govuk-body">This is the content for Writing well for specialists.</p>'
+              html: '<p class="govuk-body">Normally you will need to give a copy of your passport or birth certificate. If you cannot do this then you can get a recognised person to vouch for your identity.</p>'
             }
           },
           {
             heading: {
-              text: "Know your audience"
+              text: "Types of help you can get for study"
             },
             content: {
-              html: '<p class="govuk-body">This is the content for Know your audience.</p>'
+              html: '<p class="govuk-body">You can get a range of help ranging from funds for books to software to help do your study.</p>'
             }
           },
           {
             heading: {
-              text: "How people read"
+              text: "Application processing times"
             },
             content: {
-              html: '<p class="govuk-body">This is the content for How people read.</p>'
+              html: '<p class="govuk-body">Normally applications are processed in 2 weeks. This can be longer if you do not have a standard proof of identity or our course is new.</p>'
             }
           }
         ]

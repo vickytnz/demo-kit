@@ -1,17 +1,18 @@
 {% set pageTitle = "Upload your proof of identity" %}
-{% set nextPage = "5-router" %}
+{% set nextPage = "upload-router" %}
+{% set form = true %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
-{% block form %}
+{% block account %}
 
 
-{% if data['errors'] and not data['fileUpload1'] %}
+{% if data['errors'] and not data['fileUpload2'] %}
 {{ govukErrorSummary({
   titleText: "There is a problem",
   errorList: [
     {
       text: "Select a file",
-      href: "#fileUpload1"
+      href: "#fileUpload2"
     }
   ]
 }) }}
@@ -24,11 +25,11 @@
 
         {{ govukFileUpload({
           id: "file-upload-1",
-          value: data['fileUpload1'],
-          name: "fileUpload1",
+          value: data['fileUpload2'],
+          name: "fileUpload2",
           errorMessage: {
             text: "Select a file"
-          } if ( data['errors'] and not data['fileUpload1']),
+          } if ( data['errors'] and not data['fileUpload2']),
 
           label: {
             text: "Upload a file",

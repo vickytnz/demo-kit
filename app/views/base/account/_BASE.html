@@ -19,9 +19,9 @@
   serviceUrl: "/" + folder + "/" + subfolder + "/index",
   navigation: [
     {
-      href:  "/" + folder + "/" + subfolder + "/index",
-      text: "Account home",
-      active: true
+      href:  "/" + folder + "/" + subfolder + "/tasks/index",
+      text: "Tasks",
+      active: true if (pageTitle == "Tasks") else false
     },
     {
       href: "#",
@@ -47,23 +47,55 @@
   html: 'This is a not a real service – it is just for user research.'
 }) }}
 
+{% if pageTitle == "Tasks" or pageTitle == "Upload your proof of identity" %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href:  "/" + folder + "/" + subfolder + "/index"
+    }, {
+      text: "Tasks",
+      href:  "/" + folder + "/" + subfolder + "/tasks/index"
+    } if pageTitle == "Upload your proof of identity"
+  ]
+}) }}
+
+{% endif %}
+
 {% endblock %}
+
+
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+
+
+          {% if form %}
+          <form class="form" novalidate action="{% if prevURL and prevURL.indexOf('check-your-answers') > -1 %}check-your-answers{% else %}{{nextPage}}{% endif %}" method="post">
+    {% endif %}
+
+
+
+
 {% block account %}
 
 Account content
 
 {% endblock %}
+{% if form %}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
+      </form>
+{% endif %}
 
     </div>
   </div>
-
 {% endblock %}
 
 {% block footer %}

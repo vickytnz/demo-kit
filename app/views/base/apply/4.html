@@ -1,4 +1,4 @@
-{% set pageTitle = "Do you want to upload a document now?" %}
+{% set pageTitle = "Uploading documents to prove your identity" %}
 {% set nextPage = "4-router" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
@@ -19,14 +19,25 @@
 {% endif %}
 
 
+{{ pageTitle | headingH1 | safe  }}
+
+<p>You need to confirm your identity before we can process your application. To do this you need to upoad a copy of your passport or birth certificate.</p>
+
+<p>If you do not have this now you can upload it later in your account.</p>
+
+
+
+<p>If you do not have a passport or birth certificate you can <a class="govuk-link" href="/{{folder}}/accordion" target="_blank" >check other ways to confirm your identity (opens in new tab)</a>.</p>
+
+
+
         {{ govukRadios({
           name: "upload",
           value: data['upload'],
           fieldset: {
             legend: {
-              text: pageTitle,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+              text: "Do you want to upload a document to prove your identity now?",
+              classes: "govuk-fieldset__legend--m"
             }
           },
           errorMessage: {
