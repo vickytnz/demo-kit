@@ -47,7 +47,21 @@
   html: 'This is a not a real service – it is just for user research.'
 }) }}
 
-{% if pageTitle == "Tasks" or pageTitle == "Upload your proof of identity" %}
+{% if pageTitle == "Tasks"%}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href:  "/" + folder + "/" + subfolder + "/index"
+    }
+  ]
+}) }}
+
+{% endif %}
+
+{% if pageTitle == "Upload your proof of identity" %}
+
 
 {{ govukBreadcrumbs({
   items: [
@@ -57,9 +71,10 @@
     }, {
       text: "Tasks",
       href:  "/" + folder + "/" + subfolder + "/tasks/index"
-    } if pageTitle == "Upload your proof of identity"
+    } 
   ]
 }) }}
+
 
 {% endif %}
 
