@@ -115,13 +115,22 @@
 {% endblock %}
 
 
+
 {% block header %}
 {{ govukHeader({
-  homepageUrl: "https://gov.uk",
+  classes: "govuk-header--full-width-border"
+}) }}
+
+
+{{ govukServiceNavigation({
   serviceName:  serviceName,
+
   serviceUrl: "/" + folder + "/start"
 }) }}
-  {% endblock %}
+
+
+
+{% endblock %}
 
 {% block beforeContent %}
 {{ govukPhaseBanner({
@@ -130,14 +139,6 @@
   },
   html: 'This is a not a real service – it is just for user research.'
 }) }}
-
-
-{% if not hideBack %} <!-- function to hide back link -->
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-{% endif %}
 
 {% endblock %}
 

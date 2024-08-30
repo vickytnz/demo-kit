@@ -1,4 +1,4 @@
-{% set serviceName = "Study help account" %}
+{% set serviceName = "Manage your study help" %}
 
 {% extends "layouts/main.html" %}
 
@@ -9,7 +9,12 @@
 
 {% block header %}
 {{ govukHeader({
-  homepageUrl: "https://gov.uk",
+  classes: "govuk-header--full-width-border"
+
+}) }}
+
+
+{{ govukServiceNavigation({
   serviceName:  serviceName,
   serviceUrl: "/" + folder + "/" + subfolder + "/index",
   navigation: [
@@ -29,7 +34,10 @@
   ]
 }) }}
 
+
+
 {% endblock %}
+
 
 {% block beforeContent %}
 {{ govukPhaseBanner({
