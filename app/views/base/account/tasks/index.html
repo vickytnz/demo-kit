@@ -1,6 +1,10 @@
 {% set pageTitle = "Tasks" %}
 {% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
 
+{% block pageTitle %}
+  {% if data['fileUpload2'] and (data['upload-success'] == "true") %}Success: {% endif %}{{pageTitle}} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
 {% block account %}
 
 
