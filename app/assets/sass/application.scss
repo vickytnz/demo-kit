@@ -8,3 +8,9 @@
 .bad .govuk-width-container {
   border-bottom-color:#d4351c
 }
+
+
+.govuk-list.bad  a:focus {
+  background-color: #fff;
+  box-shadow: 0 -2px #fff, 0 4px #fff;
+}
