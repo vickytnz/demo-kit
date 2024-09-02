@@ -1,0 +1,27 @@
+{% set pageTitle = "Application complete" %}
+{% set hideBack = true %}
+{% set hideForm = true %} <!-- want custom approach to form -->
+
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+{{ govukPanel({
+     titleText: pageTitle,
+     html: "Your reference number<br><strong>HDJ2123F</strong>"
+   }) }}
+
+   <p class="govuk-body">We have sent you a confirmation email.</p>
+
+   <h2 class="govuk-heading-m">What happens next</h2>
+
+   <p class="govuk-body">
+     If you have not uploaded confirmation of your identity, you can do this in your account.
+   </p>
+
+   {{ govukButton({
+     href: "/" + folder +  "/account/index",
+   text: "Continue to your account"
+ }) }}
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% set pageTitle = "Upload your proof of identity" %}
+{% set nextPage = "upload-router" %}
+{% set form = true %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block account %}
+
+
+{% if data['errors'] and not data['fileUpload2'] %}
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select a file",
+      href: "#fileUpload2"
+    }
+  ]
+}) }}
+
+{% endif %}
+
+
+        {{ pageTitle | headingH1 | safe  }}
+
+
+        {{ govukFileUpload({
+          id: "file-upload-1",
+          value: data['fileUpload2'],
+          name: "fileUpload2",
+          errorMessage: {
+            text: "Select a file"
+          } if ( data['errors'] and not data['fileUpload2']),
+
+          label: {
+            text: "Upload a file",
+            hint: "This must be a copy of your birth certificate or passport"
+          }
+        }) }}
+
+
+
+{% endblock %}

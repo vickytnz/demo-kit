@@ -1,0 +1,58 @@
+{% set pageTitle = "Tasks" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block pageTitle %}
+  {% if data['fileUpload2'] and (data['upload-success'] == "true") %}Success: {% endif %}{{pageTitle}} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block account %}
+
+
+{% if data['fileUpload2'] and (data['upload-success'] == "true") %}
+
+{% set html %}
+  <h3 class="govuk-notification-banner__heading">
+    Task complete
+  </h3>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: "success"
+}) }}
+
+{% endif %}
+
+{{ pageTitle | headingH1 | safe  }}
+
+
+
+{{ govukTaskList({
+  idPrefix: "study",
+  items: [
+    {
+      title: {
+        text: "Your application"
+      },
+      href: "#",
+      status: {
+        text: "Completed"
+      }
+    },
+    {
+      title: {
+        text: "Upload identity evidence"
+      },
+      href: "/" + folder +  "/" + subfolder + "/tasks/upload" if (not data['fileUpload2'])  ,
+      status: {
+        text: "Completed" if data['fileUpload2'],
+        tag: {
+          text: "Incomplete" if (not data['fileUpload2']) else "Completed",
+          classes: "govuk-tag--blue"
+        } if (not data['fileUpload2'])
+      }
+    }
+  ]
+}) }}
+
+{% endblock %}

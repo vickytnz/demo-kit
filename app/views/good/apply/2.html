@@ -1,0 +1,66 @@
+{% set pageTitle = "Types of help you need" %}
+{% set nextPage = "2-router" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+
+{% if data['errors'] %}
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select what types of support you need",
+      href: "#types"
+    } if data['errors']
+  ]
+}) }}
+
+{% endif %}
+
+{{ pageTitle | headingH1 | safe  }}
+
+<p>You can get a range of help depending on your situation.</p>
+
+{{ govukDetails({
+  summaryText: "Understanding types of help",
+  text: "Tuition fee support can help you pay for study costs to your course provider. Living costs support can help you pay for books and materials. If you have a disability or health condition you could get additional support such as equipment or non-medical help."
+}) }}
+
+
+{{ govukCheckboxes({
+  name: "types",
+  values: data['types'],
+  errorMessage: {
+   text: "Select what types of support you need"
+ } if data['errors'],
+  fieldset: {
+    legend: {
+      text: "What types of help do you need?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Tuition fee support",
+      text: "Tuition fee support"
+    },
+    {
+      value: "Living costs support",
+      text: "Living costs support"
+    },
+    {
+      value: "Support to study with for a disability or health condition",
+      text: "Support to study with for a disability or health condition"
+    }
+  ]
+}) }}
+
+
+
+
+
+{% endblock %}

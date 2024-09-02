@@ -51,4 +51,5 @@ router.use((req, res, next) => {
   });
 
 // put route files in the folder for easy copying and scoping - keep at end to remember to add new versions
-router.use('/base', require('./views/base/\_routes'));
+router.use('/good', require('./views/good/\_routes'));
+router.use('/bad', require('./views/bad/\_routes'));

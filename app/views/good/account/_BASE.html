@@ -1,0 +1,148 @@
+{% set serviceName = "Manage your study help" %}
+
+{% extends "layouts/main.html" %}
+
+
+{% block pageTitle %}
+  {% if data['errors'] %}Error: {% endif %}{{pageTitle}} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+  classes: "govuk-header--full-width-border"
+
+}) }}
+
+
+{{ govukServiceNavigation({
+  serviceName:  serviceName,
+  serviceUrl: "/" + folder + "/" + subfolder + "/index",
+  navigation: [
+    {
+      href:  "/" + folder + "/" + subfolder + "/tasks/index",
+      text: "Tasks",
+      active: true if (pageTitle == "Tasks") else false
+    },
+    {
+      href: "#",
+      text: "Settings"
+    },
+    {
+      href: "/" + folder + "/start",
+      text: "Sign out"
+    }
+  ]
+}) }}
+
+
+
+{% endblock %}
+
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a not a real service – it is just for user research.'
+}) }}
+
+{% if pageTitle == "Tasks"%}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href:  "/" + folder + "/" + subfolder + "/index"
+    }
+  ]
+}) }}
+
+{% endif %}
+
+{% if pageTitle == "Upload your proof of identity" %}
+
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href:  "/" + folder + "/" + subfolder + "/index"
+    }, {
+      text: "Tasks",
+      href:  "/" + folder + "/" + subfolder + "/tasks/index"
+    } 
+  ]
+}) }}
+
+
+{% endif %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+          {% if form %}
+          <form class="form" novalidate action="{% if prevURL and prevURL.indexOf('check-your-answers') > -1 %}check-your-answers{% else %}{{nextPage}}{% endif %}" method="post">
+    {% endif %}
+
+
+
+
+{% block account %}
+
+Account content
+
+{% endblock %}
+{% if form %}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+{% endif %}
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+
+{{ govukFooter({
+  meta: {
+    items: [
+    {
+      href: "/",
+      text: "Prototype home"
+    },
+      {
+        href: "/base/apply/cookies",
+        text: "Cookies"
+      },
+      {
+        href: "/manage-prototype",
+        text: "Manage prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      },
+      {
+        href: "https://github.com/vickytnz/demo-kit/",
+        text: "Source code on Github (opens in new tab)",
+        attributes: {
+          "target" : "_blank"
+        }
+      }
+    ]
+  }
+}) }}
+
+{% endblock %}

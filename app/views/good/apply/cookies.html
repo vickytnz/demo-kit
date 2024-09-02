@@ -1,0 +1,188 @@
+{% set pageTitle = "Cookies" %}
+{% set hideForm = true %} <!-- want custom approach to form -->
+
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block bodyStart %}
+{# override cookie banner for this page #}
+{% endblock %}
+{% block form %}
+
+
+
+
+
+
+{% if (data['success'] == "true")  %} <!-- set in route as post variable as only a post will bring up success  -->
+
+  <div class="govuk-notification-banner govuk-notification-banner--success js-cookies-page-success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" >
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+  <p class="govuk-notification-banner__heading">You’ve set your cookie preferences.</p>
+</div>
+</div>
+{% endif %}
+
+
+{{ pageTitle | headingH1 | safe  }}
+
+
+      <p>{{serviceName}} puts small files (known as ‘cookies’) on to your computer.</p>
+
+      <p>We use cookies to make prototypes work as well as possible.</p>
+
+      <p>These cookies aren’t used to identify you personally.</p>
+
+      <p><a class="govuk-link" href="https://ico.org.uk/for-the-public/online/cookies/">Find out how to manage cookies</a>.</p>
+
+      <h2 class="govuk-heading-l">Storing users' answers within prototypes</h2>
+
+      <p>To help prototypes work as well as possible, each prototype stores a cookie to remember what users select on
+        question pages.</p>
+
+      <p>This&nbsp;allows prototypes to have branching pages and show users' answers on pages like the 'Check your answers'
+        summary page.</p>
+
+      <table class="govuk-table app-table--fixed">
+
+  <caption class="govuk-table__caption govuk-visually-hidden">Cookies relating to storing users' answers within prototypes</caption>
+
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+
+      <th scope="col" class="govuk-table__header">Name</th>
+
+      <th scope="col" class="govuk-table__header">Purpose</th>
+
+      <th scope="col" class="govuk-table__header">Expires</th>
+
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">
+
+    <tr class="govuk-table__row">
+
+
+
+      <td class="govuk-table__cell">govuk-prototype-kit-&lt;UNIQUE-ID&gt;</td>
+
+
+
+
+      <td class="govuk-table__cell">Storing users' answers from question pages</td>
+
+
+
+
+      <td class="govuk-table__cell">30 days</td>
+
+
+    </tr>
+
+
+
+  </tbody>
+</table>
+
+
+<h2 class="govuk-heading-l">Saving sign in details</h2>
+
+<p>To make sure prototypes are only used by people who know they are a prototype, we add password protection. We save the details so that people can sign in again without needing the password.</p>
+
+<table class="govuk-table app-table--fixed">
+
+<caption class="govuk-table__caption govuk-visually-hidden">Cookies relating to signing in to prototypes</caption>
+
+
+<thead class="govuk-table__head">
+<tr class="govuk-table__row">
+
+<th scope="col" class="govuk-table__header">Name</th>
+
+<th scope="col" class="govuk-table__header">Purpose</th>
+
+<th scope="col" class="govuk-table__header">Expires</th>
+
+</tr>
+</thead>
+
+<tbody class="govuk-table__body">
+
+<tr class="govuk-table__row">
+
+
+
+  <tr class="govuk-table__row">
+
+
+
+    <td class="govuk-table__cell">authentication</td>
+
+
+
+
+    <td class="govuk-table__cell">Saves the password used to enter the site so that it is not needed again</td>
+
+
+
+
+    <td class="govuk-table__cell">30 days</td>
+
+
+  </tr>
+
+
+</tbody>
+</table>
+
+      <h2 class="govuk-heading-l">Change your cookie settings</h2>
+      <p>This side does not use analytics cookies. This section is added for prototype purposes only.</p>
+      <form action="/{{folder}}/cookie-page-router" method="post" novalidate="" class="cookie-consent-update">
+
+
+        {{ govukRadios({
+          name: "cookies[analytics]",
+          fieldset: {
+            legend: {
+              text: "Do you want to accept analytics cookies?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              checked: true if data['cookies']['analytics'] == "yes"
+            },
+            {
+              value: "no",
+              text: "No",
+              checked: true if data['cookies']['analytics'] == "no"
+            }
+          ]
+        }) }}
+
+
+
+
+{{ govukButton({
+
+text: "Save cookie settings"
+}) }}
+
+
+      </form>
+
+<p><a class="govuk-link" href="/{{folder}}/{{subfolder}}/1">Go back to {{serviceName}}</a></p>
+
+
+
+
+
+{% endblock %}

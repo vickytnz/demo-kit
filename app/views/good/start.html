@@ -1,0 +1,164 @@
+{% extends "layouts/main.html" %}
+{% set pageTitle = "Get help to study" %}
+{% set serviceName = " " %}
+{% block pageTitle %}
+  {{pageTitle}} - GOV.UK
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{pageTitle}}
+      </h1>
+
+      <p>  Use this service to get help for study. You can:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+
+<li>
+  register for an account
+</li><li>
+apply for help
+</li><li>
+check the progress of your application
+</li><li>
+change personal details
+</li>
+  </ul>
+
+
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+
+
+      <p>
+        {{ govukWarningText({
+          text: "You need to have documents to apply ",
+          iconFallbackText: "Warning"
+        }) }}
+
+
+<p>
+You’ll be asked for your personal information and also to upload a writing example before your application can be processed.
+</p>
+<p>
+Here are <a class="govuk-link" href="accordion">some questions that might be relevant</a> for a fictional UK government service page to get help to study.
+</p>
+  <h2 class="govuk-heading-m">
+If you need help using this service
+</h2>
+<p>
+Contact your study provider if you need help finding out what type of help you can get.
+</p>
+
+<p>Registering takes around 5 minutes.</p>
+
+{{ govukButton({
+  text: "Start now",
+  href: "apply/1",
+  isStartButton: true
+}) }}
+
+<h2 class="govuk-heading-m">
+If you have already applied
+</h2>
+<p class="govuk-body">
+You can <a class="govuk-link" href="account/index">check your account.</a> You will need your application reference and some personal details.
+</p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a class="govuk-link" href="#">
+
+                Study information
+              </a>
+            </li>
+            <li>
+              <a class="govuk-link" href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-link govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+
+
+{{ govukFooter({
+  meta: {
+    items: [
+    {
+      href: "/",
+      text: "Prototype home"
+    },
+      {
+        href: "/manage-prototype",
+        text: "Manage prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      },
+      {
+        href: "https://github.com/vickytnz/demo-kit/",
+        text: "Source code on Github (opens in new tab)",
+        attributes: {
+          "target" : "_blank"
+        }
+      }
+    ]
+  }
+}) }}
+
+{% endblock %}

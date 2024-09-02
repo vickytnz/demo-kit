@@ -1,0 +1,153 @@
+{% set pageTitle = "Check your answers before sending your application" %}
+{% set hideBack = true %}
+{% set hideForm = true %} <!-- want custom approach to form -->
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+{{pageTitle | headingH1 | safe }}
+
+<h2 class="govuk-heading-m">Your details</h2>
+
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-9",
+  rows: [
+    {
+      key: {
+        text: "Full name"
+      },
+      value: {
+        text:  data['full-name'] or "Full Name"
+      },
+      actions: {
+        items: [
+          {
+            href: "1",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        text:  data['email-address'] or "email@example.com"
+      },
+      actions: {
+        items: [
+          {
+            href: "1",
+            text: "Change",
+            visuallyHiddenText: "email"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: (data["date-of-birth-day"] or "1") + " " +  (data["date-of-birth-month"] or "12") | monthToWords  + " "  + (data['date-of-birth-year'] or "1975")
+      },
+      actions: {
+        items: [
+          {
+            href: "1",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Where you are studying"
+      },
+      value: {
+        text: data['country'] or "Northumbria University"
+      },
+      actions: {
+        items: [
+          {
+            href: "1a",
+            text: "Change",
+            visuallyHiddenText: "university"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Types of help you need"
+      },
+      value: {
+        html: (data['types'] | join('<br>')) if data['types'] else  "Example type"
+      },
+      actions: {
+        items: [
+          {
+            href: "2",
+            text: "Change",
+            visuallyHiddenText: "types of help you need"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Detail"
+      },
+      value: {
+        text: data['moreDetail'] or "Example of a lot of text that will be related to what is needed"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Proof of identity"
+      },
+      value: {
+        html: data["fileUpload1"] or "Not provided"
+      },
+      actions: {
+        items: [
+          {
+            href: "5",
+            text: "Change",
+            visuallyHiddenText: "proof of identity"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+
+<h2 class="govuk-heading-m">Now send your application</h2>
+
+<p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+<form action="confirmation" method="post" novalidate>
+
+  <input type="hidden" name="answers-checked" value="true">
+
+  {{ govukButton({
+    text: "Accept and send"
+  }) }}
+
+</form>
+
+
+{% endblock %}

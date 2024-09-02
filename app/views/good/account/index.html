@@ -1,0 +1,33 @@
+{% set pageTitle = "Account home" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block account %}
+
+
+
+{% if not data['fileUpload2'] %}
+
+{% set html %}
+
+
+  <p class="govuk-notification-banner__heading">
+    You have tasks to complete.
+    <a class="govuk-notification-banner__link" href="tasks/index">Go to incomplete tasks</a>.
+  </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
+{% endif %}
+
+{{ pageTitle | headingH1 | safe  }}
+
+
+  <p class="govuk-body">
+You have <a class="govuk-link" href="#">1 application</a>.
+
+
+  </p>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% set pageTitle = "Your details" %}
+{% set nextPage = "1-router" %}
+{% extends "/"  + folder +  "/" + subfolder + "/_BASE.html" %}
+
+{% block form %}
+
+{% if data['errors'] and  not (data['fullName'] and data['email'] and data['date-of-birth-day'] and data['date-of-birth-month'] and data['date-of-birth-year']) %}
+
+<div class="govuk-error-summary" data-module="govuk-error-summary">
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        {% if not data['fullName'] %}<li>
+        <a href="#full-name">Enter your full name</a>
+        </li>
+        {% endif %}
+
+        {% if (not data['email'])%}
+
+        <li>
+          <a href="#email">Enter email address</a>
+        </li>
+        {% endif %}
+
+{% if ((not data['date-of-birth-day']) or (not data['date-of-birth-month']) or (not data['date-of-birth-year']))%}
+        <li>
+          <a href="#date-of-birth">Enter date of birth</a>
+        </li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{{ pageTitle | headingH1 | safe  }}
+
+
+    {{ govukInput({
+    label: {
+      text: "Full name",
+      classes: "govuk-fieldset__legend--m"
+    },
+    id: "full-name",
+    name: "fullName",
+    autocomplete: "name",
+    spellcheck: false,
+    value: data['fullName'],
+    errorMessage: {
+    text: "Enter full name"
+  } if (data['errors'] and not data['fullName'])
+  }) }}
+
+
+    {{ govukInput({
+    label: {
+      text: "Email address",
+      classes: "govuk-fieldset__legend--m"
+    },
+    id: "email-address",
+    name: "email",
+    type: "email",
+    autocomplete: "email",
+    spellcheck: false,
+    value: data['email'],
+    errorMessage: {
+    text: "Enter email address"
+  } if (data['errors'] and not data['email'])
+  }) }}
+
+
+  {{ govukDateInput({
+  fieldset: {
+    legend: {
+      text: "Date of birth",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "For example, 27 3 2007"
+  },
+  errorMessage: {
+    text: "Enter date of birth"
+  } if (data['errors'] and not (data['date-of-birth-day'] and data['date-of-birth-month'] and data['date-of-birth-year'])) ,
+  id: "date-of-birth",
+  namePrefix: "date-of-birth",
+  items: [
+    {
+      classes: "govuk-input--width-2 govuk-input--error" if (data['errors'] and not (data['date-of-birth-day'] and data['date-of-birth-month'] and data['date-of-birth-year'])) else "govuk-input--width-2",
+      name: "day",
+      value: data['date-of-birth-day']
+    },
+    {
+      classes: "govuk-input--width-2 govuk-input--error" if (data['errors'] and not (data['date-of-birth-day'] and data['date-of-birth-month'] and data['date-of-birth-year'])) else "govuk-input--width-2" ,
+      name: "month",
+      value: data['date-of-birth-month']
+    },
+    {
+      classes: "govuk-input--width-4 govuk-input--error" if (data['errors'] and not (data['date-of-birth-day'] and data['date-of-birth-month'] and data['date-of-birth-year'])) else "govuk-input--width-4"  ,
+      name: "year",
+      value: data['date-of-birth-year']
+    }
+  ]
+}) }}
+
+
+
+
+
+
+{% endblock %}

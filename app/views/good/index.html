@@ -1,0 +1,170 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName=serviceName %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      Good version
+
+    </h1>
+
+
+<p class="govuk-body">Example service for building and testing an accessible service.</p>
+
+{{ govukButton({
+  text: "Go to start page",
+  href: "/{{folder}}/start",
+  isStartButton: true
+}) }}
+
+<h2 class="govuk-heading-l">
+All screens
+</h2>
+
+<p>The screens are connected in a single journey but can also be navigated to separately from this page.</p>
+
+
+        <h3 class="govuk-heading-m">
+      Guidance pages
+        </h3>
+
+    {% set guidance = [
+    {title: "Start page", description: "Guidance, start page, important text, links (same tab and new tab)", link: "start" },
+    {title: "Guidance", description: "Accordion, links (same tab and new tab)", link: "accordion" }
+
+      ]%}
+
+    {% macro customCheck(list)%}
+      {% for object in list %}
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               {{object.title}}
+             </dt>
+             <dd class="govuk-summary-list__value">
+               {{object.description}}
+             </dd>
+          <dd class="govuk-summary-list__actions">
+    <a class="govuk-link" href="/{{folder}}/{{object.link}}">View <span class="govuk-visually-hidden">{{object.title}}</span></a>
+             </dd>
+           </div>
+    {% endfor %}
+    {% endmacro %}
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+    {{ customCheck(guidance) }}
+
+              </dl>
+
+
+
+
+    <h3 class="govuk-heading-m">
+    Apply pages
+    </h3>
+
+    {% set apply = [
+    {title: "Q1", description: "GOV.UK header, phase banner, service navigation, input, date, back link, cookie banner, error message, links (same tab and new tab)", link: "apply/1" },
+    {title: "Q1a", description: "GOV.UK header, phase banner, service navigation, autocomplete, back link, cookie banner, error message, links (same tab and new tab)", link: "apply/1a" },
+    {title: "Q2", description: "GOV.UK header, phase banner, service navigation, conditional reveal, complex question, checkboxes, back link, cookie banner, error message, links (same tab and new tab)", link: "apply/2" },
+    {title: "Q3", description: "GOV.UK header, phase banner, service navigation, textarea, back link, cookie banner, error message, links (same tab and new tab)", link: "apply/3" },
+    {title: "Q4", description: "GOV.UK header, phase banner, service navigation, radio, back link, cookie banner, error message, links (same tab and new tab)", link: "apply/4" },
+    {title: "Q5", description: "GOV.UK header, phase banner, service navigation, upload link, back link, cookie banner, error message, links (same tab and new tab)", link: "apply/5" },
+    {title: "Check your answers", description: "GOV.UK header, phase banner, service navigation,summary list, cookie banner, links (same tab and new tab)", link: "apply/check-your-answers" },
+    {title: "Confirmation", description: "GOV.UK header, phase banner, service navigation, panel, button, cookie banner, links (same tab and new tab)", link: "apply/confirmation" },
+
+    {title: "Cookies", description: " GOV.UK header, phase banner, service navigation,cookie page, success banner, links (same tab and new tab)", link: "apply/cookies" }
+
+      ]%}
+
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+    {{ customCheck(apply) }}
+
+          </dl>
+
+
+    <h3 class="govuk-heading-m">
+    Account
+    </h3>
+
+
+    {% set account = [
+    {title: "Account home", description: "GOV.UK header, phase banner, service navigation with links, notification banner, links (same tab and new tab)", link: "account/index" },
+    {title: "Tasks", description: "'Success:' in page title after success, GOV.UK header, phase banner, service navigation with links, breadcrumb, notification banner (when success upload from task), task list", link: "account/tasks/index" },
+    {title: "Uploads", description: "GOV.UK header, phase banner, service navigation with links, back link, upload link, back link, cookie banner, error message, links (same tab and new tab)", link: "account/tasks/upload" }
+
+      ]%}
+
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+      {{ customCheck(account) }}
+
+            </dl>
+
+
+    <h2 class="govuk-heading-l">
+      Testing these pages
+    </h2>
+
+<p class="govuk-body">This was made using GOV.UK Frontend, the GOV.UK Design System macros where possible and the GOV.UK Prototype kit for interactive elements. This means that it should only have issues as in the <a class="govuk-link" href="https://design-system.service.gov.uk/accessibility-statement/">GOV.UK Design System accessibility statement</a> (which note two issues with Dragon speech recognition software and some components). </p>
+<p>
+  When testing using accessibility tester <a class="govuk-link" href="https://liptrot.org/pattern-checker/" >Adam Liptrot's Pattern Checker Chrome extension</a>, there are only 3 errors and these are through known exceptions:</p>
+
+  <ol class="govuk-list govuk-list--number">
+    <li>Timeout warning not found - this has not been included for the purposes of a prototype</li>
+    <li>ARIA link to input missing on character input field - this is from the GOV.UK Design System pattern</li>
+    <li>Page title does not match service name on GOV.UK start page - this is normally on the GOV.UK website and not a transaction</li>
+    <li>Page title does not match service name on account home - this is because the page is a home of an account and the plugin is not registering the extra section</li>
+
+  </ol>
+
+  <h2 class="govuk-heading-l">
+  Known bugs
+  </h2>
+  <p>If someone goes from check your answers to a page and deletes information, the error message should show but does not. </p>
+
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+
+{{ govukFooter({
+  meta: {
+    items: [
+    {
+      href: "/",
+      text: "Prototype home"
+    },
+      {
+        href: "/manage-prototype",
+        text: "Manage prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      },
+      {
+        href: "https://github.com/vickytnz/demo-kit/",
+        text: "Source code on Github (opens in new tab)",
+        attributes: {
+          "target" : "_blank"
+        }
+      }
+    ]
+  }
+}) }}
+
+{% endblock %}
