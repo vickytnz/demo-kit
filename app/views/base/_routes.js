@@ -100,35 +100,33 @@ router.post('/apply/5-router', (req, res) =>{
 })
 
 
-router.all('/account/tasks/index', (req, res, next) =>{
-
-  if (req.session.data['fileUpload2'] && (req.session.data['upload-success'] == 'true') ) {
-    console.log('true');
-    req.session.data['successBanner'] = 'true';
-    req.session.data['upload-success'] = '';
-    next();
-  } else {
-    console.log('false');
-    req.session.data['successBanner'] = '';
-    req.session.data['upload-success'] = '';
-    next();
-  }
-
-
-})
-
-
 router.post('/account/tasks/upload-router', (req, res) =>{
   if (req.session.data['fileUpload2'] ){
     req.session.data['errors'] = '';
     req.session.data['upload-success'] = "true";
-    res.redirect('index');
+    return res.redirect('index');
   }
  else {
    req.session.data['errors'] = "true";
-   res.redirect('upload')
+   return res.redirect('upload')
  }
 })
+
+router.all('/account/tasks/index', (req, res, next) =>{
+
+  if (req.session.data['fileUpload2'] && (req.session.data['upload-success'] == 'true') ) {
+    console.log('true');
+  } else {
+    console.log('false');
+  }
+  req.session.data['upload-success'] = ''; //always wipe after next session
+
+next();
+
+})
+
+
+
 
 
 module.exports = router

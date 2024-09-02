@@ -4,7 +4,7 @@
 {% block account %}
 
 
-{% if data['successBanner'] %}
+{% if data['fileUpload2'] and (data['upload-success'] == "true") %}
 
 {% set html %}
   <h3 class="govuk-notification-banner__heading">
