@@ -9,7 +9,9 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% block header %}
 {{ govukHeader({
+  attributes: { "style" : "border-bottom-color:#d4351c" }  if (folder == "bad") ,
   classes: "govuk-header--full-width-border"
+
 
 }) }}
 

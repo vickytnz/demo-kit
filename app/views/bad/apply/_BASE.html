@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 {% set serviceName = "Get help to study" %}
 {% block pageTitle %}
-  {% if data['errors'] %}Error: {% endif %}{{pageTitle}} - {{ serviceName }} - GOV.UK
+  {% if data['errors'] %}Error: {% endif %}{{pageTitle}} - {{ serviceName }} (bad example) - GOV.UK
 {% endblock %}
 
 
@@ -118,7 +118,9 @@
 
 {% block header %}
 {{ govukHeader({
-  classes: "govuk-header--full-width-border"
+  homepageUrl: "/" + folder  + "/",
+  attributes: { "style" : "border-bottom-color:#d4351c" },
+  classes: "govuk-header--full-width-border bad"
 }) }}
 
 

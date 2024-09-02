@@ -7,6 +7,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: "/"
+        }
+      ]
+    }) }}
 
     <h1 class="govuk-heading-xl">
       Good version
@@ -18,7 +26,7 @@
 
 {{ govukButton({
   text: "Go to start page",
-  href: "/{{folder}}/start",
+  href: "/" + folder + "/start",
   isStartButton: true
 }) }}
 

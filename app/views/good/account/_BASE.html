@@ -9,6 +9,7 @@
 
 {% block header %}
 {{ govukHeader({
+  homepageUrl: "/" + folder  + "/index",
   classes: "govuk-header--full-width-border"
 
 }) }}
@@ -71,7 +72,7 @@
     }, {
       text: "Tasks",
       href:  "/" + folder + "/" + subfolder + "/tasks/index"
-    } 
+    }
   ]
 }) }}
 

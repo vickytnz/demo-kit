@@ -7,7 +7,9 @@
 
 {% block header %}
   <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
+  {{ govukHeader({
+      homepageUrl: "/" + folder  + "/index"
+  }) }}
 {% endblock %}
 
 {% block beforeContent %}
